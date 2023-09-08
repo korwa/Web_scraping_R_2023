@@ -1,7 +1,20 @@
 install.packages("rvest")
+install.packages("polite")
 
 library("rvest")
 library("dplyr")
+library("polite")
+
+# Request permission to scrap from a website through ethics
+page<-bow("https://www.reddit.com/",
+          user_agent = "Susan Korwa", # contacts
+          delay = 5,# time between scap
+          force = FALSE) %>% # not forcing
+  scrape()
+
+
+rm(page)
+
 # select url where you want to scrape your data
 url<- "https://quotes.toscrape.com/"
 # store the data in an object
